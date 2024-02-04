@@ -6,4 +6,4 @@ Detailed Steps are found in the README folder.
 
 1. Prepare Our Frontend Setup (React and Pages).
 
-2.
+2. List Products.
