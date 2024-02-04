@@ -1,5 +1,5 @@
+import { Outlet } from 'react-router-dom';
 import './index.css';
-import { sampleProducts } from './data';
 
 function App() {
   return (
@@ -19,22 +19,8 @@ function App() {
         </div>
       </header>
 
-      <main className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
-        {sampleProducts.map((product) => (
-          <li className="list-none w-[350px]" key={product.slug}>
-            <div className="flex flex-col ">
-              <img
-                className="product-image"
-                src={product.image}
-                alt={product.name}
-              />
-              <div className="mt-2">
-                <h2 className="font-bold">{product.name}</h2>
-                <p>${product.price}</p>
-              </div>
-            </div>
-          </li>
-        ))}
+      <main>
+        <Outlet />
       </main>
 
       <footer>
