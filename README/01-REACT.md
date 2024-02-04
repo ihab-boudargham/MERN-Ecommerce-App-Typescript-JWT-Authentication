@@ -1,3 +1,7 @@
+# FRONTEND
+
+## Prepare Our Frontend Setup (React and Pages)
+
 1. $ npx create-react-app frontend --template typescript
 
 2. $ npm install
