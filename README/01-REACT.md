@@ -5,3 +5,5 @@
 3. npm start
 
 4. In App.tsx, we can created our header, main and footer.
+
+5. Next we start by creating 3 folders. The 3 folders are: components, pages and types.
