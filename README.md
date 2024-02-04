@@ -12,4 +12,6 @@ Detailed Steps are found in the README folder.
 
 4. Product Routes
 
-5. Create Node Server
+5. Create Node Server and Get Products from Backend
+
+6. Fetch Products from Backend
