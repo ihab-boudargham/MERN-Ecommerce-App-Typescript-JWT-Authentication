@@ -7,6 +7,7 @@ import { getError } from '../utils';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import ProductItem from '../components/ProductItem';
+import { Helmet } from 'react-helmet-async';
 
 type State = {
   products: Product[];
@@ -72,10 +73,15 @@ export default function HomePage() {
   ) : error ? (
     <MessageBox variant="red">{error}</MessageBox>
   ) : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5">
-      {products.map((product) => (
-        <ProductItem key={product.slug} product={product} />
-      ))}
-    </div>
+    <>
+      <Helmet>
+        <title>ShopTech</title>
+      </Helmet>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5">
+        {products.map((product) => (
+          <ProductItem key={product.slug} product={product} />
+        ))}
+      </div>
+    </>
   );
 }

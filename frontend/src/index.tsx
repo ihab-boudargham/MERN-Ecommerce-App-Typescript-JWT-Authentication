@@ -11,6 +11,7 @@ import {
 import App from './App';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import { HelmetProvider } from 'react-helmet-async';
 
 import axios from 'axios';
 
@@ -28,6 +29,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </React.StrictMode>
 );
