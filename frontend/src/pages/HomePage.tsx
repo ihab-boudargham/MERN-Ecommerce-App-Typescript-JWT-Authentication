@@ -70,7 +70,7 @@ export default function HomePage() {
   return loading ? (
     <LoadingBox />
   ) : error ? (
-    <MessageBox variant="red">This is an error message.</MessageBox>
+    <MessageBox variant="red">{error}</MessageBox>
   ) : (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5 ">
       {products.map((product) => (

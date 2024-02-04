@@ -142,3 +142,8 @@
     // here we should replace sampleProducts with products
     {products.map((product) => (  
      <li className="list-none w-[350px]" ............
+
+12. $ npm i cors
+    $ npm i --save-dev @types/cors
+
+13. add app.use(cors());

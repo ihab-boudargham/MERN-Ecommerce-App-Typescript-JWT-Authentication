@@ -1,18 +1,18 @@
 import React, { ReactNode } from 'react';
 
 type MessageBoxProps = {
-  variant: 'red' | 'yellow' | 'green';
+  variant: 'red' | 'green' | 'yellow' | 'blue' | 'indigo' | 'purple' | 'pink';
   children: ReactNode;
 };
 
-export default function MessageBox({ variant, children }: MessageBoxProps) {
+export default function MessageBox({ children }: MessageBoxProps) {
   return (
     <div
-      className={`bg-${variant}-100 border-${variant}-400 text-${variant}-700 border px-4 py-3 rounded relative`}
+      className="bg-red-500 border-red-400 text-red-700 border px-4 py-3 rounded relative"
       role="alert"
     >
-      <strong className="font-bold">Error!</strong>
-      <span className="block sm:inline">{children}</span>
+      <strong className="font-bold text-black">Error! </strong>
+      <span className="block sm:inline text-black">{children}</span>
     </div>
   );
 }
