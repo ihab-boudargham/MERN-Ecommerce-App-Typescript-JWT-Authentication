@@ -1,5 +1,6 @@
 import React from 'react';
 import { sampleProducts } from '../data';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
@@ -7,15 +8,17 @@ export default function HomePage() {
       {sampleProducts.map((product) => (
         <li className="list-none w-[350px]" key={product.slug}>
           <div className="flex flex-col pl-3">
-            <img
-              className="product-image"
-              src={product.image}
-              alt={product.name}
-            />
-            <div className="mt-2">
-              <h2 className="font-bold">{product.name}</h2>
-              <p>${product.price}</p>
-            </div>
+            <Link to={'/product/' + product.slug}>
+              <img
+                className="product-image"
+                src={product.image}
+                alt={product.name}
+              />
+              <div className="mt-2">
+                <h2 className="font-bold">{product.name}</h2>
+                <p>${product.price}</p>
+              </div>
+            </Link>
           </div>
         </li>
       ))}

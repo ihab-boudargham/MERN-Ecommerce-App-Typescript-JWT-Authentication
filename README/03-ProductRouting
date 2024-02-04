@@ -46,4 +46,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 ## Creater router for Product page
 
-##
+1. In order to press on the product and take us to the product page, we need to create a route for the product page.
+   What we basically need is to add the slug of each item to the route of the home page in the index.tsx.
+   <Route path="product/:slug" element={<ProductPage />} />
+
+2. This is not enough what we need also is to set a link in the Home page that will take us to that route.
+<Link to={'/product/' + product.slug}>
