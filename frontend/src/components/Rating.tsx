@@ -4,8 +4,9 @@ function Rating(props: {
   caption?: string;
 }) {
   const { rating, numReviews, caption } = props;
+
   return (
-    <div className="rating">
+    <div className="rating ">
       <span>
         <i
           className={
@@ -54,12 +55,10 @@ function Rating(props: {
         />
       </span>
 
-      {caption ? (
-        <span>{caption}</span>
-      ) : numReviews !== 0 ? (
-        <span>{' ' + numReviews + 'reviews'} </span>
-      ) : (
-        ''
+      {caption && <span className="ml-6">{caption}</span>}
+
+      {numReviews !== 0 && (
+        <span className="ml-[60px]">{numReviews} reviews</span>
       )}
     </div>
   );

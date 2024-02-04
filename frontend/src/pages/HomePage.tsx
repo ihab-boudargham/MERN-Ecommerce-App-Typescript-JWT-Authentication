@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Product } from '../types/Products';
 import { useReducer } from 'react';
 import { ApiError } from '../types/ApiError';
@@ -7,6 +6,7 @@ import axios from 'axios';
 import { getError } from '../utils';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import ProductItem from '../components/ProductItem';
 
 type State = {
   products: Product[];
@@ -72,23 +72,9 @@ export default function HomePage() {
   ) : error ? (
     <MessageBox variant="red">{error}</MessageBox>
   ) : (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5 ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5">
       {products.map((product) => (
-        <li className="list-none w-[350px]" key={product.slug}>
-          <div className="flex flex-col pl-3">
-            <Link to={'/product/' + product.slug}>
-              <img
-                className="product-image"
-                src={product.image}
-                alt={product.name}
-              />
-              <div className="mt-2">
-                <h2 className="font-bold">{product.name}</h2>
-                <p>${product.price}</p>
-              </div>
-            </Link>
-          </div>
-        </li>
+        <ProductItem key={product.slug} product={product} />
       ))}
     </div>
   );

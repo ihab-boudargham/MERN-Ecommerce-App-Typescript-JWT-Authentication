@@ -5,3 +5,7 @@
      rel="stylesheet"
      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
    />
+
+3. Ceate Rating and Caption component.
+
+4.
