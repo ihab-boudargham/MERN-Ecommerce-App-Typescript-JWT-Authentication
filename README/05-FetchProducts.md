@@ -90,4 +90,55 @@
 
         \*\*}
 
-    10. For fetch products we will use useReducer.
+6.  For fetch products we will use useReducer.
+
+7.  Now import useReducer from react as:
+    import { useReducer } from 'react';
+
+8.  Now before the return statement, add the following code:
+    const [{ loading, error, products }, dispatch] = useReducer<
+    React.Reducer<State, Action> >(reducer, initialState);
+
+9.  After that we will import useEffect:
+    useEffect(() => {
+    const fetchData = async () => {
+    dispatch({ type: 'FETCH_REQUEST' });
+    try {
+    const result = await axios.get('/api/products');
+    dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+    } catch (error) {
+    dispatch({ type: 'FETCH_FAILURE', payload: getError(err as ApiError) });
+    }
+    };
+    fetchData();
+    }, []);
+
+10. we should defone getError function in utils.ts as:
+    import { ApiError } from './types/ApiError';
+
+    export const getError = (error: ApiError) => {
+    return error.response && error.response.data.message
+    ? error.response.data.message
+    : error.message;
+    };
+
+    and create types/ApiError.ts file as:
+    export declare type ApiError = {
+    message: string;
+    response: {
+    data: {
+    message: string;
+    };
+    };
+    };
+
+11. For loading and error we created componenets to display these:
+    return loading ? (
+    <LoadingBox />
+    ) : error ? (
+    <MessageBox variant="red">This is an error message.</MessageBox>
+    ) : (
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5 ">
+    // here we should replace sampleProducts with products
+    {products.map((product) => (  
+     <li className="list-none w-[350px]" ............

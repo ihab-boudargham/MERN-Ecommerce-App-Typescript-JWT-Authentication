@@ -1,7 +1,12 @@
-import React from 'react';
-import { sampleProducts } from '../data';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types/Products';
+import { useReducer } from 'react';
+import { ApiError } from '../types/ApiError';
+import axios from 'axios';
+import { getError } from '../utils';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 type State = {
   products: Product[];
@@ -45,9 +50,30 @@ const reducer = (state: State, action: Action) => {
 };
 
 export default function HomePage() {
-  return (
+  const [{ loading, error, products }, dispatch] = useReducer<
+    React.Reducer<State, Action>
+  >(reducer, initialState);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'FETCH_REQUEST' }); // set loading true
+      try {
+        const result = await axios.get('/api/products');
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data }); // Fetch the data from backend
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAILURE', payload: getError(err as ApiError) });
+      }
+    };
+    fetchData();
+  }, []);
+
+  return loading ? (
+    <LoadingBox />
+  ) : error ? (
+    <MessageBox variant="red">This is an error message.</MessageBox>
+  ) : (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5 ">
-      {sampleProducts.map((product) => (
+      {products.map((product) => (
         <li className="list-none w-[350px]" key={product.slug}>
           <div className="flex flex-col pl-3">
             <Link to={'/product/' + product.slug}>
