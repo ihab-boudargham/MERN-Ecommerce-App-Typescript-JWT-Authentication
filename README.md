@@ -1,4 +1,4 @@
-# MERN ECOMMERCE APP <<ShopTech>>
+# MERN ECOMMERCE APP || ShopTech ||
 
 ## General Steps to follow:
 
