@@ -1,16 +1,17 @@
-# Fetch Products
+# Fetch Products Using Reduce Hook
 
 1.  npm install axios
 
 2.  import axios from 'axios' in the index.tsx in the front end where we will be making the API calls.
 
-3.  But first we need to config bas URL for axios, where we will check if we are in development or production mode (.env) we will set the base URL to the backend server 'http://localhost:5000'
+3.  But first we need to config base URL for axios, where we will check if we are in development or production mode (.env) we will set the base URL to the backend server 'http://localhost:5000'
 
 4.  npm i --save-dev @types/node
 
 5.  We will fetch the products from the Home page.
 
     1.  So we will define types in the home page to use reducer hook to fetch data from backend. But first we should define initial state for reducer hook.
+
     2.  For fetching, we need:
         - the product array
         - Loading boolean

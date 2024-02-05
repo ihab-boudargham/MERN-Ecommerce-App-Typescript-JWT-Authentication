@@ -18,7 +18,7 @@
 
 ## Create Product Array
 
-1. Craete a sample data to follow.
+1. Create a sample data to follow.
 
 2. Create a data.ts file and add the array of products.
 
@@ -27,3 +27,7 @@
 ## Render Products
 
 To render our products we use map function. It is important to set a key after the map fucntion for each product.
+
+### Later
+
+We created a ProductItem in the components folder where we set the style for it. And refereced it in the HomePage after the map function.

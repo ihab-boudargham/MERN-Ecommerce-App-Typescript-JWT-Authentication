@@ -1,6 +1,6 @@
-# Product Routung
+# Product Routing
 
-## So that when we click on a product it will take us to teh descroption of the product
+## So that when we click on a product it will take us to the description of the product
 
 ## npm i react-router-dom
 
@@ -8,7 +8,7 @@
    import React from 'react';
    import ReactDOM from 'react-dom/client';
    import './index.css';
-   import 'bootstrap/dist/css/bootstrap.min.css';
+
    import {
    Route,
    RouterProvider,
@@ -18,16 +18,16 @@
    import App from './App';
    import HomePage from './pages/HomePage';
 
-const router = createBrowserRouter(
-createRoutesFromElements(
-<Route path="/" element={<App />}> </Route>
-));
+   const router = createBrowserRouter(
+   createRoutesFromElements(
+   <Route path="/" element={<App />}> </Route>
+   ));
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-<React.StrictMode>
-<RouterProvider router={router} />
-</React.StrictMode>
-);
+   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+   <React.StrictMode>
+   <RouterProvider router={router} />
+   </React.StrictMode>
+   );
 
 ## Create a route for Home page
 

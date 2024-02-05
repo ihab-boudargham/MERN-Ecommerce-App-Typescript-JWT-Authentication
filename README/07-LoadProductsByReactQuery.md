@@ -29,7 +29,7 @@
     </React.StrictMode>
     );
 
-5.  Create an apiClient.ts in the src folder
+5.  Create an apiClient.ts in the src folder. Here we basicially use it to set the base for our requests.
     create and instance of axios and export it.
     import axios from 'axios';
 
@@ -43,7 +43,15 @@
 
     export default apiClient;
 
-6.  Now create a new folder hooks. we need this to create custom hooks to interact with the backend.
+6.  Now create a new folder hooks. we need this to create custom hooks to interact with the backend. These hooks will be added to our api clients.
+
+    Create a file called ProductHooks.ts:
+
+    export const useGetProductsQuery = () =>
+    useQuery({
+    queryKey: ['products'],
+    queryFn: async () => (await apiClient.get<Product[]>(`api/products`)).data,
+    });
 
 7.  So we need to use this in home.txs. But first we need to remove all of the following:
     type State = {

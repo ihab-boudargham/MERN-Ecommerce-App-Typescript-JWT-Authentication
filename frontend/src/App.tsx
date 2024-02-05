@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="flex flex-col vh-100">
       <header className=" flex flex-row bg-black justify-between py-4 px-5">
-        <div className="text-white font-bold text-2xl">ShopeTech</div>
+        <div className="text-white font-bold text-2xl">ShopTech</div>
         <div className="text-xl ">
           <a
             href="/cart"
