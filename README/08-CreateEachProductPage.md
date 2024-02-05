@@ -37,3 +37,5 @@
 4. Call the react query hook we defined:
    const { data: product, isLoading, error } = useGetProuctDetailsBySlugQuery(slug!);
    ! to make sure it is a string
+
+5. We made use of the <Loading /> and <MessageBox /> to handle errors (make sure we include all errors)
