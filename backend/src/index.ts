@@ -4,8 +4,13 @@ import cors from 'cors';
 
 const app = express();
 app.use(cors());
+
 app.get('/api/products', (req: Request, res: Response) => {
   res.json(sampleProducts);
+});
+
+app.get('/api/product/:slug', (req: Request, res: Response) => {
+  res.json(sampleProducts.find((x) => x.slug === req.params.slug));
 });
 
 const PORT = 5000;
