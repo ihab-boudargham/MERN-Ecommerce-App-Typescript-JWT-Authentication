@@ -5,7 +5,7 @@ export default function ProductPage() {
   return (
     <>
       <Helmet>
-        <title>ShopTech</title>
+        <title>Product</title>
       </Helmet>
       <div>Product</div>
     </>

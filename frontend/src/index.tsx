@@ -12,11 +12,8 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import { HelmetProvider } from 'react-helmet-async';
-
-import axios from 'axios';
-
-axios.defaults.baseURL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:5000/' : '/';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,10 +24,15 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <HelmetProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </HelmetProvider>
   </React.StrictMode>
 );
