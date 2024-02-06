@@ -6,6 +6,8 @@ import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
 import { ApiError } from '../types/ApiError';
 import Rating from '../components/Rating';
+import { useContext } from 'react';
+import { Store } from '../Store';
 
 export default function ProductPage() {
   const params = useParams();
@@ -16,6 +18,8 @@ export default function ProductPage() {
     isLoading,
     error,
   } = useGetProuctDetailsBySlugQuery(slug!);
+
+  const { state } = useContext(Store);
 
   return isLoading ? (
     <LoadingBox />
@@ -30,8 +34,12 @@ export default function ProductPage() {
         <title>Product</title>
       </Helmet>
 
-      <div className="relative flex justify-center items-center h-screen bg-slate-300">
-        <div className="relative bg-white rounded-lg p-10 shadow-2xl">
+      <div
+        className={`relative flex justify-center items-center h-screen ${
+          state.mode === 'dark' ? 'bg-slate-500' : 'bg-slate-300'
+        }`}
+      >
+        <div className=" bg-white rounded-lg p-10 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div
               className="aspect-w-1 aspect-h-1 flex items-center justify-center"
@@ -45,7 +53,7 @@ export default function ProductPage() {
             </div>
             <div className="mt-[-100px]">
               <div className="flex flex-col absolute bg-gray-700 text-white rounded-lg p-8 py-16 shadow-lg h-[700px] w-[500px] ">
-                <h2 className="text-3xl font-extrabold mb-7">{product.name}</h2>
+                <h2 className="text-3xl font-bold mb-7">{product.name}</h2>
                 <div className="mb-4">
                   <Rating
                     rating={product.rating}
@@ -77,7 +85,7 @@ export default function ProductPage() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                       <div className="md:w-2/3">
                         <div className="flex mb-2 w-[430px] ">
-                          <span className="font-bold text-4xl text-lime-300 ml-auto">
+                          <span className="font-bold text-4xl text-white ml-auto">
                             ${product.price.toFixed(2)}
                           </span>
                         </div>

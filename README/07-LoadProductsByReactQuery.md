@@ -4,7 +4,7 @@
 
 2.  npm i @tanstack/react-query-devtools
 
-3.  A simpler approach to fetch data from backend, as well as finfing isssues and debugging the code.
+3.  A simpler approach to fetch data from backend, as well as finding isssues and debugging the code.
 
 4.  In index.tsx:
     remove:

@@ -1,9 +1,12 @@
-import React from 'react';
 import { Product } from '../types/Products';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
+import { useContext } from 'react';
+import { Store } from '../Store';
 
 export default function ProductItem({ product }: { product: Product }) {
+  const { state } = useContext(Store);
+
   return (
     <div className="bg-white shadow-lg rounded-md overflow-hidden transition-transform transform hover:scale-105 border border-gray-200 h-[500px]">
       <Link
@@ -16,7 +19,11 @@ export default function ProductItem({ product }: { product: Product }) {
           alt={product.name}
         />
       </Link>
-      <div className="p-4 h-[400px] bg-gray-100 rounded-md">
+      <div
+        className={`p-4 h-[400px] ${
+          state.mode === 'dark' ? 'bg-gray-400' : 'bg-gray-100'
+        } rounded-md`}
+      >
         <div className="h-[70px]">
           <Link
             to={`/product/${product.slug}`}

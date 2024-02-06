@@ -4,6 +4,7 @@
 
 - Get the product from backend (ie. search for it in the datasample)
 - Fetch it using ReactQuery in the frontend.
+  - apiClient to set the base of the URL
   - Create the fetching hook
   - Call the hook in product page
 - Display it
@@ -28,7 +29,6 @@
    }
    })
    }
-
 3. In productPage.tsx:
    Since we need to get the slug from the url , we should use useParams hook from react.
    const params = useParams();
