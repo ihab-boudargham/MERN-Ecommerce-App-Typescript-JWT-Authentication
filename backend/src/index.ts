@@ -1,8 +1,8 @@
-import express, { Request, Response } from 'express';
-import { sampleProducts } from './data';
+import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import { productRouter } from './routers/productRouter';
 
 dotenv.config();
 
@@ -21,13 +21,7 @@ mongoose
 const app = express();
 app.use(cors());
 
-app.get('/api/products', (req: Request, res: Response) => {
-  res.json(sampleProducts);
-});
-
-app.get('/api/product/:slug', (req: Request, res: Response) => {
-  res.json(sampleProducts.find((x) => x.slug === req.params.slug));
-});
+app.use('/api/products', productRouter);
 
 const PORT = 5000;
 
