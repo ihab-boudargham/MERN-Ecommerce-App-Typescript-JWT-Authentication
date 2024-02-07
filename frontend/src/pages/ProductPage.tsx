@@ -6,10 +6,10 @@ import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
 import { ApiError } from '../types/ApiError';
 import Rating from '../components/Rating';
-import { useContext } from 'react';
-import { Store } from '../Store';
+import useStore from '../Store';
 
 export default function ProductPage() {
+  const { mode } = useStore();
   const params = useParams();
   const { slug } = params;
 
@@ -18,8 +18,6 @@ export default function ProductPage() {
     isLoading,
     error,
   } = useGetProuctDetailsBySlugQuery(slug!);
-
-  const { state } = useContext(Store);
 
   return isLoading ? (
     <LoadingBox />
@@ -36,7 +34,7 @@ export default function ProductPage() {
 
       <div
         className={`relative flex justify-center items-center h-screen ${
-          state.mode === 'dark' ? 'bg-slate-500' : 'bg-slate-300'
+          mode === 'dark' ? 'bg-gray-500' : 'bg-gray-200'
         }`}
       >
         <div className=" bg-white rounded-lg p-10 shadow-2xl">
@@ -52,7 +50,11 @@ export default function ProductPage() {
               />
             </div>
             <div className="mt-[-100px]">
-              <div className="flex flex-col absolute bg-gray-700 text-white rounded-lg p-8 py-16 shadow-lg h-[700px] w-[500px] ">
+              <div
+                className={`flex flex-col absolute ${
+                  mode === 'dark' ? 'bg-black' : 'bg-gray-700'
+                } text-white rounded-lg p-8 py-16 shadow-lg h-[700px] w-[500px]`}
+              >
                 <h2 className="text-3xl font-bold mb-7">{product.name}</h2>
                 <div className="mb-4">
                   <Rating

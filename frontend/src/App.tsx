@@ -1,33 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import './index.css';
-import { Store } from './Store';
+
 import { FaSun, FaMoon } from 'react-icons/fa';
+import useStore from './Store';
 
 function App() {
-  const { state, dispatch } = useContext(Store);
-
-  const toggleDarkMode = () => {
-    dispatch({ type: 'SWITCH_MODE' });
-    localStorage.setItem('mode', state.mode);
-  };
+  const { mode, toggleMode } = useStore();
 
   return (
-    <div
-      className={`flex flex-col vh-100 ${state.mode === 'dark' ? 'dark' : ''}`}
-    >
+    <div className={`flex flex-col vh-100 `}>
       <header
         className={`flex flex-row ${
-          state.mode === 'dark' ? 'bg-black' : 'bg-black'
+          mode === 'dark' ? 'bg-black' : 'bg-black'
         } justify-between py-4 px-5`}
       >
         <div className={`text-white font-bold text-2xl`}>ShopTech</div>
         <div className="flex flex-row text-xl">
-          <button
-            onClick={toggleDarkMode}
-            className="px-5 dark-mode-toggle-button"
-          >
-            {state.mode === 'dark' ? <FaMoon /> : <FaSun />}
+          <button onClick={toggleMode} className="px-5 dark-mode-toggle-button">
+            {mode === 'dark' ? <FaMoon /> : <FaSun />}
           </button>
           <a
             href="/cart"
@@ -47,9 +38,7 @@ function App() {
 
       <footer
         className={`text-center ${
-          state.mode === 'dark'
-            ? 'bg-gray-500 text-white'
-            : 'bg-white text-black'
+          mode === 'dark' ? 'bg-gray-500 text-white' : 'bg-white text-black'
         }`}
       >
         All rights are reserved

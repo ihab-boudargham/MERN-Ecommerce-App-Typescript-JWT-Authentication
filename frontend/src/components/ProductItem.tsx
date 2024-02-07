@@ -1,11 +1,10 @@
 import { Product } from '../types/Products';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
-import { useContext } from 'react';
-import { Store } from '../Store';
+import useStore from '../Store';
 
 export default function ProductItem({ product }: { product: Product }) {
-  const { state } = useContext(Store);
+  const { mode } = useStore();
 
   return (
     <div className="bg-white shadow-lg rounded-md overflow-hidden transition-transform transform hover:scale-105 border border-gray-200 h-[500px]">
@@ -21,7 +20,7 @@ export default function ProductItem({ product }: { product: Product }) {
       </Link>
       <div
         className={`p-4 h-[400px] ${
-          state.mode === 'dark' ? 'bg-gray-400' : 'bg-gray-100'
+          mode === 'dark' ? 'bg-gray-400' : 'bg-gray-200'
         } rounded-md`}
       >
         <div className="h-[70px]">

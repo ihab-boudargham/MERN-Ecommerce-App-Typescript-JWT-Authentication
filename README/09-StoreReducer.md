@@ -1,6 +1,8 @@
+# Reducer
+
 We will create a react context to handle the state of the application.
 
-1.  Create a Store.ts in front end.
+1.  Create a Store.ts in frontend.
 
 2.  to create a context we start by defining the type of the applictaion
 
