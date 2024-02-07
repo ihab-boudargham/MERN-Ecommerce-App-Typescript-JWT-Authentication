@@ -1,6 +1,22 @@
 import express, { Request, Response } from 'express';
 import { sampleProducts } from './data';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+
+dotenv.config();
+
+const MONGODB_URL =
+  process.env.MONGODB_URL || 'mongodb://localhost/ihababoudargham78';
+mongoose.set('strictQuery', true);
+mongoose
+  .connect(MONGODB_URL)
+  .then(() => {
+    console.log('>>>>>> Connected to MongoDB <<<<<<');
+  })
+  .catch(() => {
+    console.log('>>>>>> error mongodb <<<<<<');
+  });
 
 const app = express();
 app.use(cors());
