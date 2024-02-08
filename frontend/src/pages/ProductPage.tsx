@@ -3,21 +3,41 @@ import { useParams } from 'react-router-dom';
 import { useGetProuctDetailsBySlugQuery } from '../hooks/productHooks';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import { getError } from '../utils';
+import { convertProductToCartItem, getError } from '../utils';
 import { ApiError } from '../types/ApiError';
 import Rating from '../components/Rating';
 import useStore from '../Store';
+import { CartItem } from '../types/Cart';
 
 export default function ProductPage() {
   const { mode } = useStore();
   const params = useParams();
   const { slug } = params;
+  const { cart, addToCart } = useStore();
 
   const {
     data: product,
     isLoading,
     error,
   } = useGetProuctDetailsBySlugQuery(slug!);
+
+  const addToCartHandler = async (item: CartItem) => {
+    if (!product) {
+      console.error('Product data is not available.');
+      return;
+    }
+
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('Sorry. Product is out of stock');
+      return;
+    }
+
+    addToCart({ ...item, quantity });
+    console.log('Product added to the cart');
+  };
 
   return isLoading ? (
     <LoadingBox />
@@ -100,7 +120,14 @@ export default function ProductPage() {
                               Out of Stock
                             </button>
                           ) : (
-                            <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
+                            <button
+                              onClick={() =>
+                                addToCartHandler(
+                                  convertProductToCartItem(product)
+                                )
+                              }
+                              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300"
+                            >
                               Add to Cart
                             </button>
                           )}
