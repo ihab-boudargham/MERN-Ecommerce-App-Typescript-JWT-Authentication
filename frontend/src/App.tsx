@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './index.css';
 
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import useStore from './Store';
 
 function App() {
   const { mode, toggleMode } = useStore();
+  const { cart } = useStore();
 
   return (
     <div className={`flex flex-col vh-100 `}>
@@ -20,12 +21,17 @@ function App() {
           <button onClick={toggleMode} className="px-5 dark-mode-toggle-button">
             {mode === 'dark' ? <FaMoon /> : <FaSun />}
           </button>
-          <a
-            href="/cart"
+          <Link
+            to="/cart"
             className="text-white no-underline hover:underline mr-11"
           >
             Cart
-          </a>
+            {cart.cartItems.length > 0 && (
+              <span className="cart-quantity">
+                {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+              </span>
+            )}
+          </Link>
           <a href="/signin" className="text-white no-underline hover:underline">
             Sign In
           </a>

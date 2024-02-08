@@ -2,9 +2,25 @@ import { Product } from '../types/Products';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import useStore from '../Store';
+import { CartItem } from '../types/Cart';
+import { convertProductToCartItem } from '../utils';
 
 export default function ProductItem({ product }: { product: Product }) {
   const { mode } = useStore();
+  const { cart, addToCart } = useStore();
+
+  const addToCartHandler = async (item: CartItem) => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      console.error('Sorry. Product is out of stock');
+      return;
+    }
+
+    addToCart({ ...item, quantity });
+    console.log('Product added to the cart');
+  };
 
   return (
     <div className="bg-white shadow-lg rounded-md overflow-hidden transition-transform transform hover:scale-105 border border-gray-200 h-[500px]">
@@ -44,7 +60,12 @@ export default function ProductItem({ product }: { product: Product }) {
               Out of Stock
             </button>
           ) : (
-            <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600">
+            <button
+              onClick={() =>
+                addToCartHandler(convertProductToCartItem(product))
+              }
+              className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600"
+            >
               Add to Cart
             </button>
           )}
