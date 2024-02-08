@@ -14,7 +14,7 @@ export default function ProductItem({ product }: { product: Product }) {
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (product.countInStock < quantity) {
-      console.error('Sorry. Product is out of stock');
+      alert('Sorry. Product is out of stock');
       return;
     }
 

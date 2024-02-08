@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './index.css';
 
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaMoon, FaSun, FaShoppingCart } from 'react-icons/fa';
 import useStore from './Store';
 
 function App() {
@@ -23,11 +23,11 @@ function App() {
           </button>
           <Link
             to="/cart"
-            className="text-white no-underline hover:underline mr-11"
+            className="flex items-center text-white no-underline mr-11"
           >
-            Cart
+            <FaShoppingCart size={21} />
             {cart.cartItems.length > 0 && (
-              <span className="cart-quantity">
+              <span className="flex items-center justify-center cart-quantity h-6 w-6 pr-[2px] ">
                 {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
               </span>
             )}
