@@ -16,7 +16,10 @@ function App() {
           mode === 'dark' ? 'bg-black' : 'bg-black'
         } justify-between py-4 px-5`}
       >
-        <div className={`text-white font-bold text-2xl`}>ShopTech</div>
+        <Link to="/" className="text-white font-bold text-2xl no-underline">
+          ShopTech
+        </Link>
+
         <div className="flex flex-row text-xl">
           <button onClick={toggleMode} className="px-5 dark-mode-toggle-button">
             {mode === 'dark' ? <FaMoon /> : <FaSun />}

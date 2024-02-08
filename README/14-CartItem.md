@@ -189,4 +189,6 @@ const addToCartHandler = async (item: CartItem) => {
     ```
 
 10. We added the functionality of adding the product to the cart in the the ProductPage.tsx as well.
-    But I shoould note that we only need to add the HandleAddToCart function, but the product is not defined and we can't pass it directly as Product. To overcome this problem i made sure that the produt exist byt adding an if statement.
+    But I shoould note that we only need to add the HandleAddToCart function, but the product is not defined and we can't pass it directly as Product. To overcome this problem i made sure that the produt exist by adding an if statement.
+
+11. So to Press on the ShopTech and move to the home page we can simply use Link adn it will take us to the home page.
