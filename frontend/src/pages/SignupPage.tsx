@@ -43,7 +43,7 @@ export default function SignupPage() {
           <button className="button mt-4">Learn More</button>
         </div>
       </div>
-      <div className="flex items-center justify-center h-screen m-auto w-[500px]">
+      <div className="flex items-center justify-center h-screen m-auto w-[450px]">
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full space-y-4">
           <h1 className="text-2xl font-bold text-gray-800 mb-2 border-b-2 border-gray-400 pb-2">
             Join Us Today!
@@ -51,29 +51,15 @@ export default function SignupPage() {
           <form className="space-y-4">
             <div>
               <label
-                htmlFor="firstName"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-800"
               >
-                First Name
+                Name
               </label>
               <input
                 type="text"
-                id="firstName"
-                placeholder="John"
-                className="mt-1 p-2 w-full border-b-2 border-gray-600 focus:outline-none focus:border-gray-700 bg-white rounded-md"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="lastName"
-                className="block text-sm font-medium text-gray-800"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                placeholder="Doe"
+                id="name"
+                placeholder="John Doe"
                 className="mt-1 p-2 w-full border-b-2 border-gray-600 focus:outline-none focus:border-gray-700 bg-white rounded-md"
               />
             </div>
@@ -101,6 +87,20 @@ export default function SignupPage() {
               <input
                 type="password"
                 id="password"
+                placeholder="********"
+                className="mt-1 p-2 w-full border-b-2 border-gray-600 focus:outline-none focus:border-gray-700 bg-white rounded-md"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="passwordConfirm"
+                className="block text-sm font-medium text-gray-800"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="passwordConfirm"
                 placeholder="********"
                 className="mt-1 p-2 w-full border-b-2 border-gray-600 focus:outline-none focus:border-gray-700 bg-white rounded-md"
               />
