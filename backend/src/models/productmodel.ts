@@ -14,10 +14,10 @@ export class Product {
   public image!: string;
 
   @prop({ required: true })
-  public brand!: string;
+  public storeName!: string;
 
   @prop({ required: true })
-  public category!: string;
+  public productCategory!: string;
 
   @prop({ required: true })
   public description!: string;

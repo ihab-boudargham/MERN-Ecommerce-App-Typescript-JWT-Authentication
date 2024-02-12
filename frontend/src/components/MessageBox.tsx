@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 type MessageBoxProps = {
-  variant: 'red' | 'green' | 'yellow' | 'blue' | 'indigo' | 'purple' | 'pink';
+  variant: string;
   children: ReactNode;
 };
 

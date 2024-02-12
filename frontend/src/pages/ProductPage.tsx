@@ -53,7 +53,7 @@ export default function ProductPage() {
       </Helmet>
 
       <div
-        className={`relative flex justify-center items-center h-screen ${
+        className={` flex justify-center items-center h-screen ${
           mode === 'dark' ? 'bg-gray-500' : 'bg-gray-200'
         }`}
       >
@@ -90,18 +90,18 @@ export default function ProductPage() {
                   <div className="md:w-2/3">
                     <div className="mb-2">
                       <span className="text-xl text-gray-200 font-medium">
-                        Brand:
+                        storeName:
                       </span>
                       <span className="font-semibold text-xl text-gray-200 ml-2">
-                        {product.brand}
+                        {product.storeName}
                       </span>
                     </div>
                     <div className="mb-2">
                       <span className="text-xl text-gray-200 font-medium">
-                        Category:
+                        productCategory:
                       </span>
                       <span className="font-semibold text-xl text-gray-200 ml-2">
-                        {product.category}
+                        {product.productCategory}
                       </span>
                     </div>
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">

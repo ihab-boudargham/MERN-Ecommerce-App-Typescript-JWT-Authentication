@@ -64,9 +64,7 @@ Let us use the example where you have an initial state:
       { _id: '1', name: 'Product A', quantity: 2 },
       { _id: '2', name: 'Product B', quantity: 1 },
     ],
-    // Other cart properties...
   },
-  // Other state properties...
 }
 And you want to add a new item to the cart:
 

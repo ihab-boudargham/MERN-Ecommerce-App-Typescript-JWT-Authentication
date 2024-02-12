@@ -12,7 +12,7 @@ function App() {
   return (
     <div className={`flex flex-col vh-100 `}>
       <header
-        className={`flex flex-row ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-row ${
           mode === 'dark' ? 'bg-black' : 'bg-black'
         } justify-between py-4 px-5`}
       >
@@ -41,7 +41,7 @@ function App() {
         </div>
       </header>
 
-      <main>
+      <main className="mt-14">
         <Outlet />
       </main>
 

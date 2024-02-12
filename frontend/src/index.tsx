@@ -14,12 +14,20 @@ import ProductPage from './pages/ProductPage';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import CartPage from './pages/CartPage';
+import SigninPage from './pages/SigninPage';
+import SignupPage from './pages/SignupPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<HomePage />} />
       <Route path="product/:slug" element={<ProductPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/help" element={<h1>HELP!</h1>} />
+      <Route path="/shipping" element={<h1>SHIPPING!</h1>} />
+      <Route path="/signin" element={<SigninPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Route>
   )
 );

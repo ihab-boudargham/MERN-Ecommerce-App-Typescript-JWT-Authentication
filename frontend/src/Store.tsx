@@ -6,6 +6,8 @@ type AppState = {
   toggleMode: () => void;
   cart: Cart;
   addToCart: (item: CartItem) => void;
+  updateCartHandler: (item: CartItem, newQuantity: number) => void;
+  removeFromCart: (item: CartItem) => void;
 };
 
 const useStore = create<AppState>((set) => ({
@@ -15,7 +17,6 @@ const useStore = create<AppState>((set) => ({
       window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light',
-
   toggleMode: () =>
     set((state) => ({ mode: state.mode === 'dark' ? 'light' : 'dark' })),
 
@@ -44,6 +45,40 @@ const useStore = create<AppState>((set) => ({
         : [...state.cart.cartItems, { ...item, quantity }];
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
+    });
+  },
+
+  updateCartHandler: (item: CartItem, newQuantity: number) => {
+    if (newQuantity >= 1 && newQuantity <= item.countInStock) {
+      set((state) => {
+        const updatedCartItems = state.cart.cartItems.map((cartItem) =>
+          cartItem._id === item._id
+            ? { ...cartItem, quantity: newQuantity }
+            : cartItem
+        );
+
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+
+        return {
+          ...state,
+          cart: { ...state.cart, cartItems: updatedCartItems },
+        };
+      });
+    }
+  },
+
+  removeFromCart: (item: CartItem) => {
+    set((state) => {
+      const updatedCartItems = state.cart.cartItems.filter(
+        (cartItem) => cartItem._id !== item._id
+      );
+
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+
+      return {
+        ...state,
+        cart: { ...state.cart, cartItems: updatedCartItems },
+      };
     });
   },
 }));

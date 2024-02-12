@@ -12,6 +12,8 @@ export const convertProductToCartItem = (product: Product): CartItem => {
   const cartItem: CartItem = {
     _id: product._id,
     name: product.name,
+    productCategory: product.productCategory, // Ensure these properties are copied
+    storeName: product.storeName, // Ensure these properties are copied
     slug: product.slug,
     image: product.image,
     price: product.price,

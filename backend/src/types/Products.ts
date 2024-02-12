@@ -2,8 +2,8 @@ export type Product = {
   name: string;
   slug: string;
   image: string;
-  category: string;
-  brand: string;
+  productCategory: string;
+  storeName: string;
   price: number;
   countInStock: number;
   description: string;

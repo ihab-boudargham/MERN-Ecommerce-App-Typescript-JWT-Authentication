@@ -6,6 +6,8 @@ export type CartItem = {
   price: number;
   _id: string;
   name: string;
+  productCategory: string;
+  storeName: string;
 };
 
 export type ShippingAddress = {
@@ -17,11 +19,11 @@ export type ShippingAddress = {
 };
 
 export type Cart = {
+  cartItems: CartItem[];
   itemsPrice: number;
   shippingPrice: number;
   taxPrice: number;
   totalPrice: number;
-  cartItems: CartItem[];
   shippingAddress: ShippingAddress;
   paymentMethod: string;
 };

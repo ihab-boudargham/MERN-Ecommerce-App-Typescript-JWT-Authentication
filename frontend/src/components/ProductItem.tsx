@@ -2,8 +2,9 @@ import { Product } from '../types/Products';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import useStore from '../Store';
-import { CartItem } from '../types/Cart';
+
 import { convertProductToCartItem } from '../utils';
+import { CartItem } from '../types/Cart';
 
 export default function ProductItem({ product }: { product: Product }) {
   const { mode } = useStore();
@@ -37,7 +38,7 @@ export default function ProductItem({ product }: { product: Product }) {
       <div
         className={`p-4 h-[400px] ${
           mode === 'dark' ? 'bg-gray-400' : 'bg-gray-200'
-        } rounded-md`}
+        } rounded-b-md`}
       >
         <div className="h-[70px]">
           <Link
